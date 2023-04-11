@@ -33,7 +33,7 @@ def fileUpload():
     #session['uploadFilePath']=destination
     res = summarize_text_model()
     #response="Whatever you wish too return"
-    return res
+    return jsonify(res)
 
 @app.route('/link', methods = ['GET'])
 def yt_file_upload():

@@ -16,23 +16,25 @@ class Upload extends React.Component {
     ev.preventDefault();
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
-    data.append('filename', this.fileName.value);
+    data.append('filename', 'video');
+    console.log("Hello");
     let response = await fetch('http://localhost:5000/upload', {
       method: 'POST',
       body: data,
     });
-    let jsonData = response.json();
+    console.log(response);
+    let jsonData = await response.json();
     this.props.setSummary(jsonData);
   }
   render() {
     return (
       <form className='' onSubmit={this.handleUploadImage}>
-        <br/>
+        <br />
         <header className='header-class1'>OR UPLOAD FILE</header>
-        <br/><br/><br/>
+        <br /><br /><br />
         <span>
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button class="bn632-hover bn20">Upload</button>
         </span>
       </form>
