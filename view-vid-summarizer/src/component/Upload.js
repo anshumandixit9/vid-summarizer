@@ -12,18 +12,17 @@ class Upload extends React.Component {
     this.handleUploadImage = this.handleUploadImage.bind(this);
   }
 
-  handleUploadImage(ev) {
+  async handleUploadImage(ev) {
     ev.preventDefault();
-
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
-    fetch('http://localhost:5000/upload', {
+    let response = await fetch('http://localhost:5000/upload', {
       method: 'POST',
       body: data,
-    }).then((response) => {
-      response.json()
     });
+    let jsonData = response.json();
+    this.props.setSummary(jsonData);
   }
   render() {
     return (

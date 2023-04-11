@@ -1,5 +1,5 @@
 import os
-from flask import Flask, flash, request, redirect, url_for, session
+from flask import Flask, flash, request, redirect, url_for, session, jsonify
 from flask_session import Session
 from werkzeug.utils import secure_filename
 from flask_cors import CORS, cross_origin
@@ -37,8 +37,10 @@ def fileUpload():
 
 @app.route('/link', methods = ['GET'])
 def yt_file_upload():
-    res = yt_model()
-    return res
+    args = request.args
+    youtubeLink = args.get('youtubeUrl')
+    res = yt_model(youtubeLink)
+    return jsonify(res)
 
 @app.route('/transcript', methods = ['GET'])
 def transcript_generator():
