@@ -9,7 +9,7 @@ import transformers
 from transformers import BartTokenizer, BartForConditionalGeneration, pipeline
 
 def summarize_text_model():
-  os.system('ffmpeg -i ./test_docs/video.mp4 -acodec pcm_s16le -ar 16000 ./test_docs/ytaudio.wav')
+  os.system('ffmpeg -i ./test_docs/video.mp4 -acodec pcm_s16le -ar 16000 -y ./test_docs/ytaudio.wav')
   device = "cuda" if torch.cuda.is_available() else "cpu"
   device
   model = SpeechRecognitionModel("jonatasgrosman/wav2vec2-large-xlsr-53-english", device = device)
