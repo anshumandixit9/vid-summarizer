@@ -1,11 +1,9 @@
-import Upload from "./component/Upload";
+import Home from "./component/Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Upload/>
-      </header>
+        <Home/>
     </div>
   );
 }

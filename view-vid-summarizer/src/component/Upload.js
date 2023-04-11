@@ -1,4 +1,5 @@
 import React from 'react';
+import './upload.css';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -21,26 +22,20 @@ class Upload extends React.Component {
       method: 'POST',
       body: data,
     }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:5000/${body.file}` });
-      });
+      response.json()
     });
   }
-
   render() {
     return (
-      <form onSubmit={this.handleUploadImage}>
-        <div>
+      <form className='' onSubmit={this.handleUploadImage}>
+        <br/>
+        <header className='header-class1'>OR UPLOAD FILE</header>
+        <br/><br/><br/>
+        <span>
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-        </div>
-        <div>
-          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
-        </div>
-        <br />
-        <div>
-          <button>Upload</button>
-        </div>
-        <img src={this.state.imageURL} alt="img" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="bn632-hover bn20">Upload</button>
+        </span>
       </form>
     );
   }
